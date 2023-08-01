@@ -1,12 +1,16 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CounterObserver extends BlocObserver {
-  const CounterObserver();
+
+class CounterPage extends StatelessWidget {
+  /// {@macro counter_page}
+  const CounterPage({super.key});
 
   @override
-  void onChange(BlocBase<dynamic> bloc, Change<dynamic> change) {
-    super.onChange(bloc, change);
-    // ignore: avoid_print
-    print('${bloc.runtimeType} $change');
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => CounterCubit(),
+      child: const CounterView(),
+    );
   }
 }
